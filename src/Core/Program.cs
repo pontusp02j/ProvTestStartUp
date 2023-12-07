@@ -20,11 +20,8 @@ builder.Services.AddMediatR(x => x.RegisterServicesFromAssemblies(typeof(Program
 builder.Services.AddMemoryCache();
 builder.Services.AddHttpClient();
 
-
-//Mappers to profile folder
 builder.Services.AddAutoMapper(typeof(ProductProfile));
 
-// Enable sessions
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
