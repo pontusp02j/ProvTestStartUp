@@ -60,11 +60,15 @@ const ProductsPage = () => {
     <div>
       <Space style={{ marginBottom: 16, width: '100%' }} direction="vertical">
         <InputNumber
+          min={0}
+          max={100000}
           placeholder="Min Price"
           onChange={(value) => handleFilterChange('minPrice', value)}
           style={{ width: '100%' }}
         />
         <InputNumber
+          min={0}
+          max={100000}
           placeholder="Max Price"
           onChange={(value) => handleFilterChange('maxPrice', value)}
           style={{ width: '100%' }}
