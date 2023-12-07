@@ -98,17 +98,28 @@ namespace Core.RequestHandlers.Products
                 .Take(request.PageSize)
                 .ToList();
         }
-           private List<ProductResponse> MapProducts(List<Product> products)
+
+        private List<ProductResponse> MapProducts(List<Product> products)
         {
-            return products.Select(product =>
-            {
-                var productResponse = _mapper.Map<ProductResponse>(product);
-                productResponse.Description = string.Empty;
-                productResponse.Rating = null;
-                
-                return productResponse;
-            }).ToList();
+            return products
+                .Select(product =>
+                {
+                    var productResponse = _mapper.Map<ProductResponse>(product);
+
+                    if (productResponse != null)
+                    {
+                        productResponse.Description = string.Empty;
+                        productResponse.Rating = null;
+                    }
+
+                    return productResponse;
+                })
+                .Where(productResponse => productResponse != null)
+                .ToList()!;
         }
+
+
+
 
         private List<string> GetUniqueCategories(List<Product> products)
         {

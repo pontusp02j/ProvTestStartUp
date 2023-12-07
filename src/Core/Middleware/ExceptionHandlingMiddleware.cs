@@ -38,5 +38,4 @@ namespace Core.Middleware
             await context.Response.WriteAsync(result);
         }
     }
-
 }
