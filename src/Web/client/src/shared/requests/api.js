@@ -1,32 +1,11 @@
 import axios from 'axios';
 
-/*
-
- Exampel how to use it 
-
- import { api } from './api'; // adjust the path as necessary
-
-// Example usage in an async function
-async function createItem() {
-    try {
-        const newItem = await api.create('items', { name: 'NewItem', price: 100 });
-        console.log('Item created:', newItem);
-    } catch (error) {
-        console.error('Error creating item:', error);
-    }
-}
-
-// You can similarly use api.read, api.update, and api.delete
-
-*/
-
-const API_BASE_URL = 'https://localhost:44420';
+const API_BASE_URL = 'http://localhost:5248/api/';
 
 const apiClient = axios.create({
     baseURL: API_BASE_URL,
     headers: {
         'Content-Type': 'application/json',
-        // Add any other headers here
     },
 });
 

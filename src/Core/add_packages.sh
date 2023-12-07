@@ -18,5 +18,6 @@ dotnet add package Microsoft.IdentityModel.Tokens --version 6.30.1
 dotnet add package Newtonsoft.Json --version 13.0.3
 dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL --version 7.0.4
 dotnet add package System.IdentityModel.Tokens.Jwt --version 6.30.1
+dotnet add package CacheManager.Microsoft.Extensions.Caching.Memory --version 2.0.0-beta-1629
 
 echo "Packages added successfully."
