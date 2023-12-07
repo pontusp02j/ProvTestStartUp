@@ -33,15 +33,18 @@ const ProductsPage = () => {
       const response = await api.read(`products?${params.toString()}`);
       setProducts(response.products);
       setPagination(prev => ({ ...prev, total: response.totalCount }));
-      if (!categories.length) {
+      
+      if (!categories.length) 
+      {
         setCategories(response.categories);
       }
+
     } catch (error) {
       navigate('/error', { state: { error } });
     } finally {
       setLoading(false);
     }
-  }, [pagination.currentPage, pagination.pageSize, filters, navigate]);
+  }, [pagination.currentPage, pagination.pageSize, filters, navigate, categories.length]);
 
   useEffect(() => {
     fetchProducts();
