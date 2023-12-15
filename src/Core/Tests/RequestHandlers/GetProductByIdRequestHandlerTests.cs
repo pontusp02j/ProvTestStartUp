@@ -4,42 +4,35 @@ using AutoMapper;
 using Core.Queries.Products;
 using Core.Responses.Products;
 using Core.RequestHandlers.Products;
-using System.Threading.Tasks;
-using System.Threading;
 using Core.Entities.Products;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 using Core.Utilities;
-using System.Net.Http;
 using System.Net;
 using System.Text;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using Core.Tests.Util;
 
 namespace Core.UnitTests
 {
-    public class MockHttpMessageHandler : HttpMessageHandler
-    {
-        private readonly HttpResponseMessage _fakeResponse;
 
-        public MockHttpMessageHandler(HttpResponseMessage response)
-        {
-            _fakeResponse = response;
-        }
-
-        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-        {
-            return Task.FromResult(_fakeResponse);
-        }
-    }
 
     [TestClass]
     public class GetProductByIdRequestHandlerTests
     {
-        private Mock<IMapper> _mockMapper = new Mock<IMapper>();
-        private Mock<IHttpClientFactory> _mockHttpClientFactory = new Mock<IHttpClientFactory>();
-        private Mock<IOptions<ApiSettings>> _mockApiSettings = new Mock<IOptions<ApiSettings>>();
-        private HttpClient _httpClient = new HttpClient();
+        private Mock<IMapper> _mockMapper;
+        private Mock<IHttpClientFactory> _mockHttpClientFactory;
+        private Mock<IOptions<ApiSettings>> _mockApiSettings;
+        private HttpClient _httpClient;
+
+        public GetProductByIdRequestHandlerTests()
+        {
+            _mockMapper = new Mock<IMapper>();
+            _mockHttpClientFactory = new Mock<IHttpClientFactory>();
+            _mockApiSettings = new Mock<IOptions<ApiSettings>>();
+            _httpClient = new HttpClient();
+        }
 
         [TestInitialize]
         public void Initialize()
